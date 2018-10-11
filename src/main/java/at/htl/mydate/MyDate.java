@@ -18,7 +18,7 @@ public class MyDate {
     private String date = "";
     private String weekdayString = "";
     private int year2 = 0;
-    private int actualDay = 7;
+    private int actualDay = 11;
     private int actualMonth = 10;
     private int actualYear = 2018;
 
