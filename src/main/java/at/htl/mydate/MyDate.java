@@ -86,17 +86,18 @@ public class MyDate {
 
         parts = input.split("\\.");
         dayString = parts[0];
-        monthString = parts[1];
+        monthString = parts[1]; // 2018-04-11-HM: ArrayIndexOutOfBoundsException, wenn input == "q"
         yearString = parts[2];
         dayInt = Integer.valueOf(dayString);
         monthInt = Integer.valueOf(monthString);
         yearInt = Integer.valueOf(yearString);
 
+        // 2018-04-11-HM: hier würde sich eine Switch-Anweisung anbieten
         if ((monthInt == 1) && (dayInt > 31)) {
             correctDate = false;
         }
         else if ((monthInt == 2) && (dayInt > 28)) {
-            if ((dayInt == 29) && (!is29days())) {
+            if ((dayInt == 29) && (!is29days())) { // 2018-04-11-HM: auch Schaltjahre berücksichtigt => super!
                 correctDate = false;
             }
         }
@@ -148,11 +149,28 @@ public class MyDate {
             if (yearInt % 100 == 0 && yearInt % 400 == 0) {
                 is29days = true;
             } else if (yearInt % 100 == 0 && yearInt % 400 != 0) {
+                is29days = true; // 2018-04-11-HM: richtig wäre is29days = false;
+            }
+            /*else { 2018-04-11-HM: müsste noch ergänzt werden
                 is29days = true;
             }
+             */
 
 
         }
+
+        // 2018-04-11-HM: vereinfachte Verzweigung
+        /*
+        is29Days = false;
+
+        if (yearInt % 4 == 0){
+            if((yearInt % 100 != 0) || (yearInt % 400 == 0){
+                is29Days = true;
+            }
+        }
+         */
+
+
         return is29days;
     }
 
@@ -221,6 +239,7 @@ public class MyDate {
         return weekdayString;
     }
     public String formatDate() {
+        // 2018-04-11-HM: keine Membervariablen notwendig => lokale Variablen ausreichend
         monthString = getMonthString();
         weekdayString = getWeekdayString();
 
@@ -228,7 +247,7 @@ public class MyDate {
 
         return date;
 
-    }
+    }// 2018-04-11-HM: Mindestens eine Leerzeile nach Ende der Methode einfügen (CTRL+ALT+L erledigt Formatierung automatisch)
     public boolean isYoungerThan(MyDate other) {
         boolean isYounger = false;
 

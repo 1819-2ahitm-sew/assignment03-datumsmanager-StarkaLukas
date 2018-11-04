@@ -5,14 +5,14 @@ public class Main {
 
     private static Scanner scanner = new Scanner(System.in);
 
-
+    // 2018-04-11-HM: funktioniert abgesehen von Exception am Programmende (siehe Kommentar in MyDate.java)
     public static void main(String[] args) {
 
         int dateNumber = 1;
         String input = "";
-        MyDate myDate;
+        MyDate myDate; // 2018-04-11-HM: wird nie verwendet
         MyDate currentDate;
-        MyDate correctDate;
+        MyDate correctDate; // 2018-04-11-HM: wird nie verwendet
         MyDate youngestDate = new MyDate("1.1.00");
 
         System.out.print("Date-Manager\n=========\n\n1. Datum: ");
